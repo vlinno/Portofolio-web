@@ -15,6 +15,8 @@
       background-repeat: no-repeat;
       background-position: center center;
       font-family: 'Segoe UI', sans-serif;
+      min-width: 0;
+      overflow-x: hidden;
     }
     h1, h2, h3, .cinzel {
       font-family: 'Cinzel', serif;
@@ -36,7 +38,45 @@
       border:" none;"
     }
     section {
-      padding: 80px 0;
+      padding: 60px 0;
+    }
+    @media (max-width: 576px) {
+      section {
+        padding: 30px 0;
+      }
+      .rounded-img {
+        width: 120px;
+      }
+      .project-card-fixed {
+        width: 100%;
+        min-height: 340px;
+        max-height: 340px;
+      }
+      .project-img-fixed {
+        height: 140px;
+      }
+      .card {
+        font-size: 0.95rem;
+      }
+      .navbar-brand {
+        font-size: 1.1rem;
+      }
+      h2.cinzel {
+        font-size: 1.3rem;
+      }
+      h3.cinzel {
+        font-size: 1.1rem;
+      }
+      .nav-menu {
+        gap: 10px;
+      }
+      .btn-download {
+        font-size: 0.95rem;
+        padding: 6px 14px;
+      }
+      .card-body {
+        padding: 1rem 0.5rem;
+      }
     }
     .card {
       background-color:rgba(0, 0, 0, 0.2);
@@ -45,6 +85,7 @@
     }
     .project-card-fixed {
       width: 380px;
+      min-width: 0;
       min-height: 400px;
       max-height: 400px;
       display: flex;
@@ -66,6 +107,7 @@
       border-bottom-right-radius: 0;
       background: #222;
       display: block;
+      max-width: 100vw;
     }
     footer {
       background-color:rgba(0, 0, 0, 0.2);
@@ -75,6 +117,8 @@
     .rounded-img {
       border-radius: 15px;
       width: 200px;
+      max-width: 100%;
+      height: auto;
     }
     .nav-link {
       color: white !important;
@@ -85,6 +129,7 @@
       gap: 20px;
       list-style: none;
       padding: 0;
+      flex-wrap: wrap;
     }
     .nav-link {
       position: relative;
@@ -123,11 +168,13 @@
     .desc-simple {
       transition: opacity 0.4s;
       opacity: 1;
+      word-break: break-word;
     }
     .desc-simple.hide {
       opacity: 0;
       height: 0;
       pointer-events: none;
+      overflow: hidden;
     }
   </style>
 </head>
@@ -135,7 +182,7 @@
 
   <!-- Navbar -->
  <nav class="navbar navbar-expand-lg fixed-top">
-  <div class="container">
+  <div class="container-fluid px-3">
     <a class="navbar-brand" href="#">Portofolio</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
@@ -163,7 +210,7 @@
 </nav>
 
   <!-- Profil Section -->
-<section id="profil" class="container" data-aos="fade-up">
+<section id="profil" class="container" data-aos="fade-up" style="padding-top:100px;">
   <h2 class="cinzel text-center mb-4">Profil</h2>
   <div class="card card-profil mb-4">
     <div class="card-body">
@@ -197,33 +244,8 @@
       <div class="card h-100">
         <div class="card-body">
           <h5 class="card-title cinzel text-center">Tools</h5>
-          <div class="row mt-3">
-            <!-- Office Tools -->
-            <div class="col-md-4 mb-3">
-              <h6 class="cinzel text-center">Office Tools</h6>
-              <div class="d-flex flex-wrap justify-content-center gap-2">
-                <div class="card shadow-sm" style="width: 80px;">
-                  <div class="card-body p-2 text-center">
-                    <img src="https://img.icons8.com/color/48/000000/ms-word.png" alt="MS Word Logo" width="30" height="30" class="mb-1">
-                    <div style="font-size: 0.8rem;">MS Word</div>
-                  </div>
-                </div>
-                <div class="card shadow-sm" style="width: 80px;">
-                  <div class="card-body p-2 text-center">
-                    <img src="https://img.icons8.com/color/48/000000/ms-excel.png" alt="MS Excel Logo" width="30" height="30" class="mb-1">
-                    <div style="font-size: 0.8rem;">MS Excel</div>
-                  </div>
-                </div>
-                <div class="card shadow-sm" style="width: 80px;">
-                  <div class="card-body p-2 text-center">
-                    <img src="https://img.icons8.com/color/48/000000/ms-powerpoint.png" alt="MS PowerPoint Logo" width="30" height="30" class="mb-1">
-                    <div style="font-size: 0.8rem;">PowerPoint</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Design & Editing -->
-            <div class="col-md-4 mb-3">
+          <div class="row mt-3">    
+            <div class="col-md-6 mb-3">
               <h6 class="cinzel text-center">Design & Editing</h6>
               <div class="d-flex flex-wrap justify-content-center gap-2">
                 <div class="card shadow-sm" style="width: 80px;">
@@ -236,12 +258,6 @@
                   <div class="card-body p-2 text-center">
                     <img src="https://cdn.simpleicons.org/canva/00C4CC" alt="Canva Logo" width="30" height="30" class="mb-1">
                     <div style="font-size: 0.8rem;"><a href="https://www.canva.com/" target="_blank" class="text-white text-decoration-none">Canva</a></div>
-                  </div>
-                </div>
-                <div class="card shadow-sm" style="width: 80px;">
-                  <div class="card-body p-2 text-center">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Blender_logo_no_text.svg" alt="Blender Logo" width="30" height="30" class="mb-1">
-                    <div style="font-size: 0.8rem;"><a href="https://www.blender.org/" target="_blank" class="text-white text-decoration-none">Blender</a></div>
                   </div>
                 </div>
                 <div class="card shadow-sm" style="width: 80px;">
@@ -260,8 +276,7 @@
                 </div>
               </div>
             </div>
-            <!-- Programming -->
-            <div class="col-md-4 mb-3">
+            <div class="col-md-6 mb-3">
               <h6 class="cinzel text-center">Programming</h6>
               <div class="d-flex flex-wrap justify-content-center gap-2">
                 <div class="card shadow-sm" style="width: 80px;">
@@ -274,12 +289,6 @@
                   <div class="card-body p-2 text-center">
                     <img src="https://cdn.simpleicons.org/laragon/00BFFF" alt="Laragon Logo" width="30" height="30" class="mb-1">
                     <div style="font-size: 0.8rem;">Laragon</div>
-                  </div>
-                </div>
-                <div class="card shadow-sm" style="width: 80px;">
-                  <div class="card-body p-2 text-center">
-                    <img src="https://cdn.simpleicons.org/xampp/FB7A24" alt="XAMPP Logo" width="30" height="30" class="mb-1">
-                    <div style="font-size: 0.8rem;">XAMPP</div>
                   </div>
                 </div>
                 <div class="card shadow-sm" style="width: 80px;">
@@ -403,7 +412,7 @@
                 <img src="https://cdn.simpleicons.org/xampp/FB7A24" alt="XAMPP Logo" width="20" height="20" class="me-1">XAMPP
               </span>
             </div>
-            <a href="" class="btn btn-download">Lihat GitHub</a>
+            <a href="https://github.com/vlinno" class="btn btn-download">Lihat GitHub</a>
           </div>
         </div>
       </div>
@@ -713,7 +722,13 @@ window.addEventListener('DOMContentLoaded', function() {
     function smoothScrollToSection(href, linkElement) {
       const target = document.querySelector(href);
       if (target) {
-        const top = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+        // Hitung offset navbar (jika fixed)
+        let offset = navbarHeight;
+        // Jika di mobile, tambahkan offset extra
+        if (window.innerWidth < 576) {
+          offset += 10;
+        }
+        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
         window.scrollTo({ top, behavior: 'smooth' });
         links.forEach(el => el.classList.remove('active'));
         if (linkElement) linkElement.classList.add('active');
@@ -736,7 +751,7 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 
     // Auto scroll to Profil section on first load
-    if (window.location.hash === '' || window.location.hash === '#') {
+    if (!window.location.hash || window.location.hash === '#' || window.location.hash === '#profil') {
       setTimeout(function() {
         smoothScrollToSection('#profil', links[0]);
       }, 300); // delay to ensure layout is ready
